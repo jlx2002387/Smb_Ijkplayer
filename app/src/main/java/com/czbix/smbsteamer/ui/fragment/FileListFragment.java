@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.czbix.smbsteamer.AppCtx;
+import com.czbix.smbsteamer.VideoActivity;
 import com.czbix.smbsteamer.dao.model.Server;
 import com.czbix.smbsteamer.helper.PreferenceHelper;
 import com.czbix.smbsteamer.model.SmbFileItem;
@@ -115,11 +116,14 @@ public class FileListFragment extends ListFragment {
             e.printStackTrace();
         }
         Uri videoUri=Uri.parse(proxyUrl);
-        final Intent intent = new Intent(Intent.ACTION_VIEW);
+        Intent intent=new Intent(getActivity(), VideoActivity.class);
+        intent.putExtra("uriPath",proxyUrl);
+        startActivity(intent);
+        /*final Intent intent = new Intent(Intent.ACTION_VIEW);
       //  intent.setDataAndType(videoUri, SmbUtils.getMimeType(item.get()));
         Log.v(ARG_SERVER,"===<<<"+videoUri);
         intent.setDataAndType(videoUri, "video/*");
-        startActivity(intent);
+        startActivity(intent);*/
     }
 
     private void startListTask() {
